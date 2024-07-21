@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+    nginx:
+        build: nginx
+        ports:
+            - "443:443"
+
+    redis:
+        build: redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - "${REDIS_VOLUME_PATH}:/data"
+
+    backend:
+        build: backend
+        ports:
+            - "5000:5000"
